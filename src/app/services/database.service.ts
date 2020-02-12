@@ -15,11 +15,12 @@ export class DatabaseService {
    * envia los nuevos datos al homeComponent para que este los trate, asi evita realizar consultas
    * a la base de datos
    */
-  public $persona;
-  public personaSeleccionada : personaInterface = {}; 
+  public $persona; 
+  public $personaSelec;
 
   constructor(private http: HttpClient) {
     this.$persona = new EventEmitter<personaInterface>();
+    this.$personaSelec = new EventEmitter<personaInterface>();
   }
 
   getAll(): Observable<personaInterface[]> {     

@@ -4,7 +4,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">
-                    {{this.dataBase.personaSeleccionada.id ? "Actualizar" : "Nuevo"}}
+
+                    {{this.forma.value.id ? "Actualizar" : "Nuevo"}}
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -13,13 +14,13 @@
             <form [formGroup]="forma" (ngSubmit)="onGuardar()">
                 <div class="modal-body">
 
-                    <input type="hidden" formControlName="id" class="form-control" [(ngModel)]="this.dataBase.personaSeleccionada.id">
+                    <input type="hidden" formControlName="id" class="form-control">
                     <br>
-                    <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" [(ngModel)]="this.dataBase.personaSeleccionada.nombre">
+                    <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control">
                     <br>
-                    <input type="text" formControlName="apellido" placeholder="Apellido" class="form-control" [(ngModel)]="this.dataBase.personaSeleccionada.apellido">
+                    <input type="text" formControlName="apellido" placeholder="Apellido" class="form-control">
                     <br>
-                    <input type="text" formControlName="edad" placeholder="Edad" class="form-control" [(ngModel)]="this.dataBase.personaSeleccionada.edad">
+                    <input type="text" formControlName="edad" placeholder="Edad" class="form-control">
 
 
 

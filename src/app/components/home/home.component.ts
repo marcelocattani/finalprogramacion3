@@ -59,12 +59,18 @@ export class HomeComponent implements OnInit {
     } 
   }
 
-  public onPreCargar(persona : personaInterface){ 
-    this.dataBase.personaSeleccionada = Object.assign({}, persona);
+  public onPreCargar(persona : personaInterface){     
+    this.dataBase.$personaSelec.emit(persona)
   }
 
   public onNuevo(){
-    this.dataBase.personaSeleccionada = {};
+    
+    this.dataBase.$personaSelec.emit({
+      nombre : "", 
+      apellido : "", 
+      edad : null,
+      id : null
+    })
   }
 
 }

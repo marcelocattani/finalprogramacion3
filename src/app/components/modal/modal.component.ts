@@ -21,11 +21,15 @@ export class ModalComponent implements OnInit {
       'edad' : new FormControl("", Validators.required),
       'id' : new FormControl(""),
     });
+
+    
+    this.dataBase.$personaSelec.subscribe( data => {     
+      this.forma.setValue(data);
+    })
   }
 
   ngOnInit() {  
-    
-    
+        
   }
 
   public onGuardar() {
