@@ -1,0 +1,27 @@
+<div class="container">
+    <button class="btn btn-success btn-block mt-5 mb-5" data-toggle="modal" data-target="#modalNuevo" (click)="onNuevo()">Nuevo</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let persona of personas; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>{{persona.edad}}</td>
+                <td>
+                    <button class="btn btn-warning " data-toggle="modal" data-target="#modalNuevo" (click)="onPreCargar(persona)">Editar</button>
+                    <button class="btn btn-danger ml-2" (click)="OnBorrar(persona.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-modal></app-modal>
