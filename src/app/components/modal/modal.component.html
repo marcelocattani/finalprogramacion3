@@ -16,18 +16,69 @@
 
                     <input type="hidden" formControlName="id" class="form-control">
                     <br>
-                    <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control">
+                    <!-- ----------------- GRUPO DE NOMBRE ---------- -->
+                    <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" [ngClass]="{'is-invalid': forma.controls['nombre'].invalid && forma.controls['nombre'].touched, 'is-valid' : forma.controls['nombre'].valid && forma.controls['nombre'].touched }">
+                    <div class="conenedor-errores" *ngIf="forma.controls['nombre'].touched" style="color: red;">
+
+                        <div class="form-control-feedback" *ngIf="forma.controls['nombre'].errors?.required">
+                            El nombre es necesario
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['nombre'].errors?.minlength">
+                            Minimo de 3 caracteres
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['nombre'].errors?.maxlength">
+                            Maximo 15 caracteres
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['nombre'].errors?.pattern">
+                            El formato no es valido, solo letras
+                        </div>
+                    </div>
                     <br>
-                    <input type="text" formControlName="apellido" placeholder="Apellido" class="form-control">
+                    <!-- ----------- GRUPO DE APELLIDO ------------  -->
+                    <input type="text" formControlName="apellido" placeholder="Apellido" class="form-control" [ngClass]="{'is-invalid': forma.controls['apellido'].invalid && forma.controls['apellido'].touched, 'is-valid' : forma.controls['apellido'].valid && forma.controls['apellido'].touched }">
+                    <div class="conenedor-errores" *ngIf="forma.controls['apellido'].touched" style="color: red;">
+
+                        <div class="form-control-feedback" *ngIf="forma.controls['apellido'].errors?.required">
+                            El apellido es necesario
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['apellido'].errors?.minlength">
+                            Minimo de 3 caracteres
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['apellido'].errors?.maxlength">
+                            Maximo 15 caracteres
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['apellido'].errors?.pattern">
+                            El formato no es valido, solo letras
+                        </div>
+                    </div>
                     <br>
-                    <input type="text" formControlName="edad" placeholder="Edad" class="form-control">
+                    <!-- --------- GRUPO DE EDAD -----------  -->
+                    <input type="text" formControlName="edad" placeholder="Edad" class="form-control" [ngClass]="{'is-invalid': forma.controls['edad'].invalid && forma.controls['edad'].touched, 'is-valid' : forma.controls['edad'].valid && forma.controls['edad'].touched }">
+                    <div class="conenedor-errores" *ngIf="forma.controls['edad'].touched" style="color: red;">
+
+                        <div class="form-control-feedback" *ngIf="forma.controls['edad'].errors?.required">
+                            La edad es necesaria
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['edad'].errors?.maxlength">
+                            Maximo 2 caracteres
+                        </div>
+                        <div class="form-control-feedback" *ngIf="forma.controls['edad'].errors?.pattern">
+                            El formato no es valido, solo numeros
+                        </div>
+                    </div>
 
 
-
+                    <!-- [disabled]="forma.invalid" -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cerrar</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="forma.invalid">Guardar</button>
+                    <ng-container *ngIf="forma.valid; else noValido">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </ng-container>
+                    <ng-template #noValido>
+                        <button class="btn-secondary btn " disabled>Guardar</button>
+                    </ng-template>
+
                 </div>
             </form>
         </div>
